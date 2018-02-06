@@ -1,8 +1,12 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+<<<<<<< HEAD
 const mongodb = require('mongodb')
 const MongoClient = mongodb.MongoClient
+=======
+const MongoClient = require('mongodb').MongoClient
+>>>>>>> 9125569f67614540e9bed1ccdbf7f469f50caaaa
 
 var db
 
