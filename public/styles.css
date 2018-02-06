@@ -1,0 +1,11 @@
+html {
+  font-size: 20px;
+}
+
+.movie {
+  margin-top: 0.5em;
+}
+
+.movie > span:first-child {
+  font-weight: bold
+}

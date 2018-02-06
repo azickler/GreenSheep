@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ma liste de films</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Mes films</h1>
+
+
+  <h2>A voir :</h2>
+    <ul class="movie">
+    <% for(var i=0; i<movies.length; i++) {%>
+      <% if(movies[i].etat != 1){ %>
+      <li class="movie">
+        <span><%= movies[i].name %></span>
+        <div>
+          <a href="/delete?id=<%= movies[i]._id %>"> X </a>
+        </div>
+
+          <div>
+            <a href="/updatevu?id=<%= movies[i]._id %>"> O </a>
+          </div>
+
+      </li>
+      <% } %>
+    <% } %>
+    </ul>
+
+  <h2>Déjà vu :</h2>
+    <ul class="movie">
+    <% for(var i=0; i<movies.length; i++) {%>
+      <% if(movies[i].etat != 0){ %>
+      <li class="movie">
+        <span><%= movies[i].name %></span>
+        <div>
+          <a href="/delete?id=<%= movies[i]._id %>"> X </a>
+        </div>
+
+          <div>
+            <a href="/updateavoir?id=<%= movies[i]._id %>"> O </a>
+          </div>
+
+      </li>
+      <% } %>
+    <% } %>
+    </ul>
+  <h2>Ajouter un film</h2>
+
+  <form action="/movie" method="POST">
+    <input type="text" placeholder="name" name="name">
+    <input type="hidden" name="etat" value="0">
+    <button type="submit">Valider</button>
+  </form>
+  <script src="main.js"></script>
+
+</body>
+</html>
