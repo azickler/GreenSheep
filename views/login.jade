@@ -1,0 +1,18 @@
+include base.jade
+body
+  if inscription == 'true'
+    | Vous avez réussi à vous inscrire, connectez vous maintenant
+  else if inscription == 'false'
+    | Vous n'avez pas réussi à vous inscrire, l'identifiant a déjà été utilisé
+  if connexion == 'false'
+    | Vous n'avez pas réussi à vous connecter, vos informations sont éronnées
+  h1 Connexion
+  form(#form action="/login" method="post")
+    input(type="text" placeholder="Votre login" name="login" id="login")
+    input(type="password" placeholder="Votre mot de passe" name="password" id="password")
+    button(type="submit") Valider
+  h1 Inscription
+    form(#form action="/inscription" method="post")
+      input(type="text" placeholder="Votre login" name="login" id="login")
+      input(type="password" placeholder="Votre mot de passe" name="password" id="password")
+      button(type="submit") Valider

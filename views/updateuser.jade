@@ -1,0 +1,7 @@
+include base.jade
+body
+  h1 Mise à jour du compte #{user.login}
+  form(#form action="/majuser?login=#{user.login}" method="post")
+    input(type="text" value="#{user.login}" name="login" id="login")
+    input(type="password" placeholder="votre nouveau mot de passe" name="password" id="password")
+    button(type="submit") Valider
