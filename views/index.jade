@@ -1,57 +1,69 @@
 include base.jade
-body
-  | Bienvenue #{sess}
-  br
-  a(href="/majuser") Mettre à jour vos informations de connexion
-  br
-  a(href="/logout") Déconnexion
-  h1 Vos films
-    | &nbsp
-    a(href="/export" title="export json")
-      i.fa.fa-arrow-up(aria-hidden='true')
-  h2 A voir :
-  table.table
-    thead
-      tr
-        th #
-        th Nom du film
-        th
-        th
-    tbody
-      each movie, i in movies
-        if movie.etat == 0
-          tr
-            th(scope='row') #{i}
-            td
-              a(href="/maj?id=#{movie._id}") #{movie.name}
-            td
-              a(href="/delete?id=#{movie._id}") Supprimer
-            td
-              a(href="/updatevu?id=#{movie._id}") Déjà vu
+.container
+  .row
+    .panel.panel-default
+    .col-md-2.col-sm-4.col-xs-10
+      .panel-heading Bienvenue #{sess}
+      .panel-body
+        a(href="/majuser") Mettre à jour vos informations
+        br
+        a(href="/logout") Déconnexion
+    .col-md-5.col-sm-7.col-xs-13
+      .panel-heading Vos films à voir :
+      .panel-body
+        table.table
+          thead
+            tr
+              th Nom du film
+              th
+              th
+          tbody
+            each movie, i in movies
+              if movie.etat == 0
+                tr
+                  td
+                    a(href="/maj?id=#{movie._id}") #{movie.name}
+                  td
+                    a(href="/delete?id=#{movie._id}") Supprimer
+                  td
+                    a(href="/updatevu?id=#{movie._id}") Déjà vu
+            tr
+              form(#form action="/movie" method="post")
+                td
+                  input(type="text" placeholder="nom du film" name="name" id="name")
+                  input(type="hidden" name="etat" value="0")
+                  input(type="hidden" name="user" value="#{sess}")
+                td
+                  button(type="submit") Ajouter
+    .col-md-5.col-sm-7.col-xs-13
+      .panel-heading Vos films déjà vus :
+      .panel-body
+        table.table
+          thead
+            tr
+              th Nom du film
+              th
+              th
+          tbody
+            each movie, i in movies
+              if movie.etat == 1
+                tr
+                  td
+                    a(href="/maj?id=#{movie._id}") #{movie.name}
+                  td
+                    a(href="/delete?id=#{movie._id}") Supprimer
+                  td
+                    a(href="/updateavoir?id=#{movie._id}") A voir
+                  td
+            tr
+              form(#form action="/movie" method="post")
+                td
+                  input(type="text" placeholder="nom du film" name="name" id="name")
+                  input(type="hidden" name="etat" value="1")
+                  input(type="hidden" name="user" value="#{sess}")
+                td
+                  button(type="submit") Ajouter
 
-  h2 Déjà vu :
-  table.table
-    thead
-      tr
-        th #
-        th Nom du film
-        th
-        th
-    tbody
-      each movie, i in movies
-        if movie.etat == 1
-          tr
-            th(scope='row') #{i}
-            td
-              a(href="/maj?id=#{movie._id}") #{movie.name}
-            td
-              a(href="/delete?id=#{movie._id}") Supprimer
-            td
-              a(href="/updateavoir?id=#{movie._id}") A voir
 
-  h2 Ajouter un film
-  form(#form action="/movie" method="post")
-    input(type="text" placeholder="nom du film" name="name" id="name")
-    input(type="hidden" name="etat" value="0")
-    input(type="hidden" name="user" value="#{sess}")
-    button(type="submit") Valider
+  script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
+  script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )

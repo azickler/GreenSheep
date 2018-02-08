@@ -1,6 +1,7 @@
 include base.jade
-body
-  h1 Mise à jour de #{movie.name}
-  form(#form action="/maj?id=#{movie._id}" method="post")
-    input(type="text" value="#{movie.name}" name="name" id="name")
-    button(type="submit") Valider
+  .col-md-5.col-sm-7.col-xs-13
+    .panel-heading Mise à jour de #{movie.name}
+    .panel-body
+      form(#form action="/maj?id=#{movie._id}" method="post")
+        input(type="text" value="#{movie.name}" name="name" id="name")
+        button(type="submit") Valider

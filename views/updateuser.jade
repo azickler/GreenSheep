@@ -1,7 +1,12 @@
 include base.jade
-body
-  h1 Mise à jour du compte #{user.login}
-  form(#form action="/majuser?login=#{user.login}" method="post")
-    input(type="text" value="#{user.login}" name="login" id="login")
-    input(type="password" placeholder="votre nouveau mot de passe" name="password" id="password")
-    button(type="submit") Valider
+  .col-md-5.col-sm-7.col-xs-13
+    .panel-heading Mise à jour du compte #{user.login}
+    .panel-body
+      form(#form action="/majuser?login=#{user.login}" method="post")
+        .form-group
+          label(for="login") Login : &nbsp
+          input(type="text" value="#{user.login}" name="login" id="login")
+        .form-group
+          label(for="password") Mot de passe : &nbsp
+          input(type="password" placeholder="votre nouveau mot de passe" name="password" id="password")
+        button(type="submit") Valider
