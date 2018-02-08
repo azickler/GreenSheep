@@ -91,9 +91,10 @@ app.post('/maj', (req, res) => {
 
 
 app.get('/export', (req, res) => {
+  sess=req.session;
   var collectionInfo = db.collection("movie")
   // Here we will find all students
-  collectionInfo.find().toArray(function(err, movie) {
+  collectionInfo.find({user:sess.login}).toArray(function(err, movie) {
      // so now, we can return all students to the screen.
      res.status(200).json({'Mes films' : movie})
   })

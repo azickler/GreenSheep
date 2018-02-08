@@ -6,27 +6,49 @@ body
   br
   a(href="/logout") Déconnexion
   h1 Vos films
-  a(href="/export") Réaliser un export JSON
+    | &nbsp
+    a(href="/export" title="export json")
+      i.fa.fa-arrow-up(aria-hidden='true')
   h2 A voir :
-  ul.movie
-    each movie in movies
-      if movie.etat == 0
-        li.movie
-          a(href="/maj?id=#{movie._id}") #{movie.name}
-          | &nbsp
-          a(href="/delete?id=#{movie._id}") Supprimer
-          | &nbsp / &nbsp
-          a(href="/updatevu?id=#{movie._id}") Déjà vu
+  table.table
+    thead
+      tr
+        th #
+        th Nom du film
+        th
+        th
+    tbody
+      each movie, i in movies
+        if movie.etat == 0
+          tr
+            th(scope='row') #{i}
+            td
+              a(href="/maj?id=#{movie._id}") #{movie.name}
+            td
+              a(href="/delete?id=#{movie._id}") Supprimer
+            td
+              a(href="/updatevu?id=#{movie._id}") Déjà vu
+
   h2 Déjà vu :
-  ul.movie
-    each movie in movies
-      if movie.etat == 1
-        li.movie
-          a(href="/maj?id=#{movie._id}") #{movie.name}
-          | &nbsp
-          a(href="/delete?id=#{movie._id}") Supprimer
-          | &nbsp / &nbsp
-          a(href="/updateavoir?id=#{movie._id}") A voir
+  table.table
+    thead
+      tr
+        th #
+        th Nom du film
+        th
+        th
+    tbody
+      each movie, i in movies
+        if movie.etat == 1
+          tr
+            th(scope='row') #{i}
+            td
+              a(href="/maj?id=#{movie._id}") #{movie.name}
+            td
+              a(href="/delete?id=#{movie._id}") Supprimer
+            td
+              a(href="/updateavoir?id=#{movie._id}") A voir
+
   h2 Ajouter un film
   form(#form action="/movie" method="post")
     input(type="text" placeholder="nom du film" name="name" id="name")
