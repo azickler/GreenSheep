@@ -20,6 +20,6 @@ Vous pouvez desormais profiter de la todolist sur l'adresse suivante :
 
 Les mots de passe des utilisateurs sont les mêmes que leurs pseudo __(exemple, pseudo : admin, mdp : admin)__
 
-Il existe 3 comptes enregistrés, __test, azickler__. (Tous 2 avec leur mdp correspondant comme ci-dessus)
+Il existe 2 comptes enregistrés, __test, azickler__. (Tous 2 avec leur mdp correspondant comme ci-dessus)
 
 ## Vous pouvez désormais apprecier notre magnifique todolist.
